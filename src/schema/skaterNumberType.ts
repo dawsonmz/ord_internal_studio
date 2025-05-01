@@ -4,25 +4,25 @@ export const skaterNumberType = {
     type: 'document',
     fields: [
         {
-            name: 'derby_name',
-            title: 'Derby Name',
+            name: 'skater_number',
+            title: 'Skater Number',
             type: 'string',
         },
         {
-            name: 'skater_number',
-            title: 'Skater Number',
+            name: 'derby_name',
+            title: 'Derby Name',
             type: 'string',
         },
     ],
     preview: {
         select: {
-            derby_name: 'derby_name',
             skater_number: 'skater_number',
+            derby_name: 'derby_name',
         },
         prepare(value: Record<string, any>) {
-            const { derby_name, skater_number } = value;
+            const { skater_number, derby_name } = value;
             return {
-                title: `${derby_name} ${skater_number}`,
+                title: `${skater_number} ${derby_name}`,
             };
         },
     },
