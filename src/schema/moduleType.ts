@@ -23,13 +23,22 @@ export const moduleType = {
             name: 'short_text',
             title: 'Short Text',
             type: 'array',
-            of: [ { type: 'block' } ],
+            of: [{ type: 'block' }],
         },
         {
             name: 'detailed_text',
             title: 'Detailed Text',
             type: 'array',
-            of: [ { type: 'block' } ],
+            of: [{ type: 'block' }],
+        },
+        {
+            name: 'resources',
+            title: 'Resources',
+            type: 'array',
+            of: [
+                { type: 'block' },
+                { type: 'image' },
+            ],
         },
     ],
     preview: {
