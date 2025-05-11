@@ -36,8 +36,7 @@ export const moduleType = {
       title: 'Resources',
       type: 'array',
       of: [
-        { type: 'block' },
-        { type: 'image' },
+        { type: 'image_resource' },
       ],
     },
   ],
