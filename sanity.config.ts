@@ -5,18 +5,18 @@ import { schemaTypes } from './src/schema';
 import { structure } from './src/structure';
 
 export default defineConfig({
-    name: 'default',
-    title: 'ORD Internal',
+  name: 'default',
+  title: 'ORD Internal',
 
-    projectId: 'vh55mhjn',
-    dataset: 'internal',
+  projectId: 'vh55mhjn',
+  dataset: 'internal',
 
-    plugins: [
-        structureTool({ structure }),
-        visionTool(),
-    ],
+  plugins: [
+    structureTool({ structure }),
+    visionTool(),
+  ],
 
-    schema: {
-        types: schemaTypes,
-    },
+  schema: {
+    types: schemaTypes,
+  },
 });

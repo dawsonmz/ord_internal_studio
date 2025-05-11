@@ -5,9 +5,9 @@ import { skaterNumberType } from './skaterNumberType';
 import { trainingPlanType } from './trainingPlanType'
 
 export const schemaTypes = [
-    moduleCategoryType,
-    moduleType,
-    seasonType,
-    skaterNumberType,
-    trainingPlanType,
+  moduleCategoryType,
+  moduleType,
+  seasonType,
+  skaterNumberType,
+  trainingPlanType,
 ];
