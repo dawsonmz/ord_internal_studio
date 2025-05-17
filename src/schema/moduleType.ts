@@ -1,3 +1,5 @@
+import { QueryListOptions } from './queryListOptions';
+
 export const moduleType = {
   name: 'module',
   title: 'Module',
@@ -11,8 +13,15 @@ export const moduleType = {
     {
       name: 'category',
       title: 'Category',
-      type: 'reference',
-      to: [{ type: 'module_category' }],
+      type: 'string',
+      options: {
+        list: [],
+        singletonType: 'module_categories',
+        fieldName: 'categories',
+      },
+      components: {
+        input: QueryListOptions,
+      },
     },
     {
       name: 'minutes',
@@ -43,7 +52,7 @@ export const moduleType = {
   preview: {
     select: {
       title: 'title',
-      category: 'category.name',
+      category: 'category',
       minutes: 'minutes',
     },
     prepare(value: Record<string, any>) {

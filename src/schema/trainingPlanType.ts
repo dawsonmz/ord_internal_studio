@@ -1,3 +1,5 @@
+import { QueryListOptions } from './queryListOptions';
+
 export const trainingPlanType = {
   name: 'training_plan',
   title: 'Training Plan',
@@ -11,8 +13,15 @@ export const trainingPlanType = {
     {
       name: 'season',
       title: 'Season',
-      type: 'reference',
-      to: [{ type: 'season' }],
+      type: 'string',
+      options: {
+        list: [],
+        singletonType: 'seasons',
+        fieldName: 'seasons',
+      },
+      components: {
+        input: QueryListOptions,
+      },
     },
     {
       name: 'date_time',
@@ -41,15 +50,14 @@ export const trainingPlanType = {
   ],
   preview: {
     select: {
-      season: 'season.season',
-      year: 'season.year',
+      season: 'season',
       training_label: 'training_label',
       date_time: 'date_time',
     },
     prepare(value: Record<string, any>) {
-      const { season, year, training_label, date_time } = value;
+      const { season, training_label, date_time } = value;
       return {
-        title: `${season} ${year} - Training ${training_label}`,
+        title: `${season} - Training ${training_label}`,
         subtitle: new Date(date_time.valueOf()).toLocaleDateString('en-GB', { dateStyle: 'full' }),
       };
     },
