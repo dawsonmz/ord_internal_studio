@@ -21,7 +21,7 @@ export const QueryListOptions = (props: { schemaType: any; renderDefault: any; }
    useEffect(
     () => {
       const getListOptions = async () =>
-          sanityClientCredentials.option.fetch(`*[_type == "${singletonType}"] { ${fieldName} }`)
+          sanityClientCredentials.option.fetch(`*[_type == "${singletonType}"]`)
               .then((res) => res[0][fieldName])
               .then(setListItems);
       getListOptions();
