@@ -15,6 +15,7 @@ export const moduleCategoryType = defineType({
       title: 'Slug',
       description: 'Used as unique identifier in URL; use the \'Generate\' button to auto-fill.',
       type: 'slug',
+      validation: rule => rule.required(),
       options: {
         source: 'name',
         slugify: (input: String) => input.toLowerCase().replaceAll(' ', '-'),
