@@ -1,4 +1,4 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 
 export const seasonType = defineType({
   name: 'season',
@@ -27,10 +27,10 @@ export const seasonType = defineType({
       description: 'Training plans on the schedule for this season.',
       type: 'array',
       of: [
-        {
+        defineArrayMember({
           type: 'reference',
           to: [{ type: 'training_plan' }],
-        },
+        }),
       ],
     }),
   ],

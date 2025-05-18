@@ -1,38 +1,42 @@
-export const moduleType = {
+import { defineArrayMember, defineField, defineType } from "sanity";
+
+export const moduleType = defineType({
   name: 'module',
   title: 'Module',
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'minutes',
       title: 'Minutes',
       type: 'number',
-    },
-    {
+    }),
+    defineField({
       name: 'short_text',
       title: 'Short Text',
       type: 'array',
       of: [{ type: 'block' }],
-    },
-    {
+    }),
+    defineField({
       name: 'detailed_text',
       title: 'Detailed Text',
       type: 'array',
       of: [{ type: 'block' }],
-    },
-    {
+    }),
+    defineField({
       name: 'resources',
       title: 'Resources',
       type: 'array',
       of: [
-        { type: 'image_resource' },
+        defineArrayMember({
+          type: 'image_resource',
+        }),
       ],
-    },
+    }),
   ],
   preview: {
     select: {
@@ -47,4 +51,4 @@ export const moduleType = {
       };
     },
   },
-};
+});

@@ -1,18 +1,20 @@
-export const skaterNumberType = {
+import { defineField, defineType } from "sanity";
+
+export const skaterNumberType = defineType({
   name: 'skater_number',
   title: 'Skater Number',
   type: 'document',
   fields: [
-    {
+    defineField({
       name: 'skater_number',
       title: 'Skater Number',
       type: 'string',
-    },
-    {
+    }),
+    defineField({
       name: 'derby_name',
       title: 'Derby Name',
       type: 'string',
-    },
+    }),
   ],
   preview: {
     select: {
@@ -26,4 +28,4 @@ export const skaterNumberType = {
       };
     },
   },
-};
+});
