@@ -1,15 +1,15 @@
 import { imageResourceType } from './imageResourceType';
-import { moduleCategoriesType } from './moduleCategoriesType';
+import { moduleCategoryType } from './moduleCategoryType';
 import { moduleType } from './moduleType';
-import { seasonsType } from './seasonsType';
+import { seasonType } from './seasonType';
 import { skaterNumberType } from './skaterNumberType';
 import { trainingPlanType } from './trainingPlanType';
 
 export const schemaTypes = [
   imageResourceType,
-  moduleCategoriesType,
+  moduleCategoryType,
   moduleType,
-  seasonsType,
+  seasonType,
   skaterNumberType,
   trainingPlanType,
 ];

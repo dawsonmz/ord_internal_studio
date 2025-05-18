@@ -1,10 +1,11 @@
 import type { StructureBuilder, StructureResolver } from 'sanity/structure';
 
-export const singletonActions = new Set(["publish", "discardChanges", "restore"]);
-export const singletonTypes = new Map(
+// Top-level document types for the left-hand panel.
+export const topLevelTypes = new Map(
     [
-      [ "module_categories", "Module Categories" ],
-      [ "seasons", "Seasons" ],
+      ['module_category', 'Modules by Category'],
+      ['season', 'Training Plans by Season'],
+      ['skater_number', 'Skater Numbers'],
     ],
 );
 
@@ -12,24 +13,15 @@ export const structure: StructureResolver = (
     S: StructureBuilder
 ) => S
     .list()
-    .title('Document Types')
+    .title('Documents')
     .items(
-        [
-          ...singletonTypes.entries()
-              .map(
-                  ([key, value]) =>
-                      S.listItem()
-                          .title(value)
-                          .id(key)
-                          .child(S.document().schemaType(key).documentId(key))
-              ),
-          ...S.documentTypeListItems()
-              .filter(
-                  listItem => [
-                    'module',
-                    'skater_number',
-                    'training_plan'
-                  ].includes(listItem.getId()!)
-            ),
-        ],
+        topLevelTypes
+            .entries()
+            .map(
+                ([type, label]: [string, string]) =>
+                    S.listItem()
+                        .title(label)
+                        .child(S.documentTypeList(type).title(label))
+            )
+            .toArray(),
     );
