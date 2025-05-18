@@ -12,6 +12,16 @@ export const trainingPlanType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      description: 'Used as unique identifier in URL; use the \'Generate\' button to auto-fill.',
+      type: 'slug',
+      validation: rule => rule.required(),
+      options: {
+        source: 'training_label',
+      },
+    }),
+    defineField({
       name: 'date_time',
       title: 'Date and Time',
       type: 'datetime',
