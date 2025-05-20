@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from 'sanity';
 
 export const moduleCategoryType = defineType({
   name: 'module_category',

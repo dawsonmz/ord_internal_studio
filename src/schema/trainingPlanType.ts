@@ -1,4 +1,5 @@
-import { defineArrayMember, defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from 'sanity';
+import { GroupedReferenceInput } from '../components/groupedReferenceInput';
 
 export const trainingPlanType = defineType({
   name: 'training_plan',
@@ -41,6 +42,9 @@ export const trainingPlanType = defineType({
           to: [{ type: 'module' }],
           options: {
             disableNew: true,
+          },
+          components: {
+            input: GroupedReferenceInput,
           },
         }),
       ],
