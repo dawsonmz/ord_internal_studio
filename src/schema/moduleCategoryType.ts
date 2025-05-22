@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
+import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 
 export const moduleCategoryType = defineType({
   name: 'module_category',
@@ -13,12 +14,14 @@ export const moduleCategoryType = defineType({
     defineField({
       name: 'slug',
       title: 'Slug',
-      description: 'Used as unique identifier in URL; use the \'Generate\' button to auto-fill.',
+      description: 'Used as unique identifier in URL; auto-filled from Name.',
       type: 'slug',
-      validation: rule => rule.required(),
-      options: {
-        source: 'name',
-        slugify: (input: String) => input.toLowerCase().replaceAll(' ', '-'),
+      readOnly: true,
+      components: {
+        input: AutoFilledSlugInput(
+            'name',
+            (source: string) => source.toLowerCase().replaceAll(' ', '-')
+        ),
       },
     }),
     defineField({

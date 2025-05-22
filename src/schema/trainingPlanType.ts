@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
+import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 import { GroupedReferenceInput } from '../components/groupedReferenceInput';
 import { TrainingModuleListField } from '../components/trainingModuleListField';
 
@@ -16,11 +17,14 @@ export const trainingPlanType = defineType({
     defineField({
       name: 'slug',
       title: 'Slug',
-      description: 'Used as unique identifier in URL; use the \'Generate\' button to auto-fill.',
+      description: 'Used as unique identifier in URL; auto-filled from Training Label.',
       type: 'slug',
-      validation: rule => rule.required(),
-      options: {
-        source: 'training_label',
+      readOnly: true,
+      components: {
+        input: AutoFilledSlugInput(
+            'training_label',
+            (source: string) => source.toLowerCase().replaceAll(' ', '-')
+        ),
       },
     }),
     defineField({
@@ -50,7 +54,7 @@ export const trainingPlanType = defineType({
         }),
       ],
       components: {
-        input: TrainingModuleListField,
+        field: TrainingModuleListField,
       },
     }),
   ],
