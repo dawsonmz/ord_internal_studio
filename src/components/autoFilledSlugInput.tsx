@@ -9,10 +9,10 @@ export function AutoFilledSlugInput(sourceField: string, slugify: (source: strin
     useEffect(
         () => {
           if (sourceValue) {
-            const slugified = slugify(sourceValue);
+            const newSlug = slugify(sourceValue);
             const currentSlug = value?.current;
-            if (slugified !== currentSlug) {
-              onChange(set({ _type: 'slug', current: slugify(sourceValue) }));
+            if (newSlug !== currentSlug) {
+              onChange(set({ _type: 'slug', current: newSlug }));
             }
           } else if (value && value.current) {
             onChange(unset());
