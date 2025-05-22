@@ -1,5 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { GroupedReferenceInput } from '../components/groupedReferenceInput';
+import { TrainingModuleListField } from '../components/trainingModuleListField';
 
 export const trainingPlanType = defineType({
   name: 'training_plan',
@@ -48,6 +49,9 @@ export const trainingPlanType = defineType({
           },
         }),
       ],
+      components: {
+        input: TrainingModuleListField,
+      },
     }),
   ],
   preview: {

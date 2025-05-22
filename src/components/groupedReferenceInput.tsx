@@ -52,5 +52,5 @@ export function GroupedReferenceInput(props: any) {
                 </optgroup>
         )}
       </Select>
-  </Stack>;
-};
+  </Stack>
+}
