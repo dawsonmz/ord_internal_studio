@@ -2,7 +2,7 @@ import { defineConfig } from 'sanity';
 import { structureTool } from 'sanity/structure';
 import { visionTool } from '@sanity/vision';
 import { schemaTypes } from './src/schema';
-import { structure, topLevelTypes } from './src/structure';
+import { structure } from './src/structure';
 
 export default defineConfig({
   name: 'default',
@@ -18,6 +18,5 @@ export default defineConfig({
 
   schema: {
     types: schemaTypes,
-    templates: (templates) => templates.filter(({ schemaType }) => topLevelTypes.has(schemaType)),
   },
 });
