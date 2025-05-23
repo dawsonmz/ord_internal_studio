@@ -40,17 +40,18 @@ export function GroupedReferenceInput(props: any) {
   return <Stack>
       <Select fontSize={1} padding={3} space={3} onChange={handleChange} value={0}>
         <option value="">-- Select a module --</option>
-        {categories.map(
-            (category: any) =>
-                <optgroup label={category.category}>
-                  {category.modules.map(
-                      (module: any) =>
-                          <option value={JSON.stringify({ _key: module._key, _ref: module._ref, _type: 'reference' })}>
-                            {module.title} - {module.minutes} min
-                          </option>
-                  )}
-                </optgroup>
-        )}
+        {categories.filter((category: any) => category.modules)
+            .map(
+                (category: any) =>
+                    <optgroup label={category.category}>
+                      {category.modules.map(
+                          (module: any) =>
+                              <option value={JSON.stringify({ _key: module._key, _ref: module._ref, _type: 'reference' })}>
+                                {module.title} - {module.minutes} min
+                              </option>
+                      )}
+                    </optgroup>
+            )}
       </Select>
   </Stack>
 }
