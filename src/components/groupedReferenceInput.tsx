@@ -4,7 +4,7 @@ import { Select, Stack } from '@sanity/ui';
 
 export function GroupedReferenceInput(props: any) {
   const [ categories, setCategories ] = useState([]);
-  const sanityClient = useClient({ apiVersion: '2025-04-15' });
+  const sanityClient = useClient({ apiVersion: '2025-04-15' }).withConfig({ perspective: 'published' });
   const { onChange } = props;
   const handleChange = useCallback(
       (event: any) => {
