@@ -67,7 +67,7 @@ export const trainingPlanType = defineType({
       const { training_label, date_time } = value;
       return {
         title: `Training ${training_label}`,
-        subtitle: new Date(date_time.valueOf()).toLocaleDateString('en-GB', { dateStyle: 'full' }),
+        subtitle: date_time ? new Date(date_time.valueOf()).toLocaleDateString('en-GB', { dateStyle: 'full' }) : '',
       };
     },
   },

@@ -13,6 +13,10 @@ export function TrainingModuleListField(props: any) {
   useEffect(
       () => {
         async function fetchModules() {
+          if (!value) {
+            return;
+          }
+          
           const moduleIds = value.filter((module: any) => module).map((module: any) => module._ref);
           const modules = await sanityClient.fetch(
               `*[_type == "module" && _id in $moduleIds] {
