@@ -38,6 +38,11 @@ export const trainingPlanType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'visible',
+      title: 'Visible',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'modules',
       title: 'Modules',
       type: 'array',
