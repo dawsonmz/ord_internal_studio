@@ -17,10 +17,10 @@
   "dependencies": {
     "@sanity/cli": "^4.6.0",
     "@sanity/ui": "^2.15.18",
-    "@sanity/vision": "^4.6.1",
+    "@sanity/vision": "^4.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "sanity": "^4.6.1",
+    "sanity": "^4.8.1",
     "styled-components": "^6.1.17"
   },
   "devDependencies": {

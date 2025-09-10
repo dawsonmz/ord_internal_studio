@@ -66,6 +66,11 @@ export const trainingPlanType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'visible',
+      title: 'Visible',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'modules',
       title: 'Modules',
       type: 'array',
@@ -86,6 +91,9 @@ export const trainingPlanType = defineType({
       },
     }),
   ],
+  initialValue: {
+    visible: false,
+  },
   preview: {
     select: {
       training_label: 'training_label',
