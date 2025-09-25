@@ -15,7 +15,15 @@ export const skaterNumberType = defineType({
       title: 'Derby Name',
       type: 'string',
     }),
+    defineField({
+      name: 'temporary',
+      title: 'Temporary Name',
+      type: 'boolean',
+    }),
   ],
+  initialValue: {
+    temporary: false,
+  },
   preview: {
     select: {
       skater_number: 'skater_number',
@@ -23,9 +31,8 @@ export const skaterNumberType = defineType({
     },
     prepare(value: Record<string, any>) {
       const { skater_number, derby_name } = value;
-      return {
-        title: `${skater_number} ${derby_name}`,
-      };
+      const title = skater_number ? `${skater_number} ${derby_name}` : `(no number) ${derby_name}`
+      return { title };
     },
   },
 });
