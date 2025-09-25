@@ -54,6 +54,20 @@ export const rosterType = defineType({
       ],
     }),
     defineField({
+      name: 'jammers',
+      title: 'Jammers',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'skater_number' }],
+          options: {
+            disableNew: true,
+          },
+        }),
+      ],
+    }),
+    defineField({
       name: 'bench',
       title: 'Bench',
       type: 'array',
