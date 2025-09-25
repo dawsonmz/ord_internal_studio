@@ -32,6 +32,16 @@ export const rosterType = defineType({
       },
     }),
     defineField({
+      name: 'season',
+      title: 'Season',
+      description: 'The season for which this roster is relevant',
+      type: 'reference',
+      to: [{ type: 'season' }],
+      options: {
+        disableNew: true,
+      },
+    }),
+    defineField({
       name: 'line_a_name',
       title: 'Line A Name',
       type: 'string',
