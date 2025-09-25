@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
+import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 
 export const rosterType = defineType({
   name: 'roster',
@@ -8,12 +9,27 @@ export const rosterType = defineType({
     defineField({
       name: 'name',
       title: 'Roster Name',
+      description: 'The full name of the team that the roster belongs to.',
       type: 'string',
     }),
     defineField({
-      name: 'identifier',
-      title: 'Roster Identifier',
+      name: 'short_name',
+      title: 'Short Roster Name',
+      description: 'A shortened name used for display; will be slugified.',
       type: 'string',
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      description: 'Used as unique identifier in URL; auto-filled from Short Roster Name.',
+      type: 'slug',
+      readOnly: true,
+      components: {
+        input: AutoFilledSlugInput(
+            'short_name',
+            (source: string) => source.toLowerCase().replaceAll(' ', '-')
+        ),
+      },
     }),
     defineField({
       name: 'line_a_name',
@@ -83,6 +99,6 @@ export const rosterType = defineType({
     }),
   ],
   preview: {
-    select: { title: 'name' },
+    select: { title: 'short_name' },
   },
 });
