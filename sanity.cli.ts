@@ -10,9 +10,8 @@ export default defineCliConfig({
     hostname: "localhost",
     port: 3333,
   },
-  /**
-   * Enable auto-updates for studios.
-   * Learn more at https://www.sanity.io/docs/cli#auto-updates
-   */
-  autoUpdates: true,
+  deployment: {
+    appId: 'gy893evwg6fdshlcoug6qjid',
+    autoUpdates: true,
+  },
 });
