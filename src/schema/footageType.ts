@@ -8,6 +8,13 @@ export const footageType = defineType({
     defineField({
       name: 'title',
       title: 'Title',
+      description: 'Example: Oslo vs. Vienna',
+      type: 'string',
+    }),
+    defineField({
+      name: 'event',
+      title: 'Event Name',
+      description: 'Example: Tiger City Takedown',
       type: 'string',
     }),
     defineField({
