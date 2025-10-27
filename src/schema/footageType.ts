@@ -40,6 +40,12 @@ export const footageType = defineType({
       description: 'Unique ID for the YouTube video shown in the link, e.g. https://www.youtube.com/watch?v=<id here>',
       type: 'string',
     }),
+    defineField({
+      name: 'start_seconds',
+      title: 'Start Time (seconds)',
+      description: 'The number of seconds from the beginning that the video should be timestamped at',
+      type: 'number',
+    }),
   ],
   preview: {
     select: {
