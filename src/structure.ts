@@ -7,6 +7,7 @@ export const topLevelTypes = new Map(
       ['season', 'Training Plans by Season'],
       ['skater_number', 'Skater Numbers'],
       ['roster', 'Rosters'],
+      ['footage', 'Footage'],
     ],
 );
 

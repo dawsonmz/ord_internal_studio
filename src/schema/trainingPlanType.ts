@@ -63,11 +63,13 @@ export const trainingPlanType = defineType({
     defineField({
       name: 'summary',
       title: 'Summary',
+      description: 'Brief summary of the skills covered',
       type: 'string',
     }),
     defineField({
       name: 'visible',
       title: 'Visible',
+      description: 'Whether to show the training plan on the website',
       type: 'boolean',
     }),
     defineField({

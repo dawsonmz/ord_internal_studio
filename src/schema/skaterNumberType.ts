@@ -18,6 +18,7 @@ export const skaterNumberType = defineType({
     defineField({
       name: 'temporary',
       title: 'Temporary Name',
+      description: 'True if the name is a placeholder for a skater still choosing their derby name',
       type: 'boolean',
     }),
   ],

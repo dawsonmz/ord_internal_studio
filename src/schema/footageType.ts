@@ -1,0 +1,62 @@
+import { defineField, defineType } from 'sanity';
+
+export const footageType = defineType({
+  name: 'footage',
+  title: 'Footage',
+  type: 'document',
+  fields: [
+    defineField({
+      name: 'title',
+      title: 'Title',
+      type: 'string',
+    }),
+    defineField({
+      name: 'type',
+      title: 'Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'A Team', value: 'A Team' },
+          { title: 'B Team', value: 'B Team' },
+          { title: 'Scrimmage', value: 'Scrimmage' },
+        ],
+      },
+    }),
+    defineField({
+      name: 'date',
+      title: 'Date',
+      type: 'date',
+    }),
+    defineField({
+      name: 'id',
+      title: 'YouTube video ID',
+      description: 'Unique ID for the YouTube video shown in the link, e.g. https://www.youtube.com/watch?v=<id here>',
+      type: 'string',
+    }),
+  ],
+  preview: {
+    select: {
+      title: 'title',
+      type: 'type',
+      date: 'date',
+    },
+    prepare(value: Record<string, any>) {
+      const { title, type, date } = value;
+      return {
+        title: `${title} (${type})`,
+        subtitle: date
+            ? new Date(date.valueOf())
+                .toLocaleDateString(
+                    'en-GB',
+                    {
+                      timeZone: 'Europe/Oslo',
+                      day: 'numeric',
+                      month: 'long',
+                      year: 'numeric',
+                    },
+                )
+            : '',
+      };
+    },
+  },
+});
