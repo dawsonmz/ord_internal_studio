@@ -36,6 +36,13 @@ export const seasonType = defineType({
         }),
       ],
     }),
+    defineField({
+      name: 'orderRank',
+      title: 'Order Rank',
+      description: 'Used by Orderable Document List plugin, do not modify',
+      type: 'string',
+      hidden: true,
+    }),
   ],
   preview: {
     select: {
