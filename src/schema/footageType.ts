@@ -18,6 +18,15 @@ export const footageType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'season',
+      title: 'Season',
+      type: 'reference',
+      to: [{ type: 'season' }],
+      options: {
+        disableNew: true,
+      },
+    }),
+    defineField({
       name: 'type',
       title: 'Type',
       type: 'string',
@@ -43,8 +52,14 @@ export const footageType = defineType({
     defineField({
       name: 'start_seconds',
       title: 'Start Time (seconds)',
-      description: 'The number of seconds from the beginning that the video should be timestamped at',
+      description: 'The number of seconds from the beginning that the YouTube video should be timestamped at',
       type: 'number',
+    }),
+    defineField({
+      name: 'other_link',
+      title: 'Other Video Link',
+      description: 'URL for a video source other than YouTube; if populated, YouTube video ID and Start Time should be left empty',
+      type: 'string',
     }),
   ],
   preview: {
