@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from 'sanity';
+import { defineField, defineType } from 'sanity';
 import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 
 export const seasonType = defineType({
@@ -23,18 +23,6 @@ export const seasonType = defineType({
             (source: string) => source.toLowerCase().replaceAll(' ', '')
         ),
       },
-    }),
-    defineField({
-      name: 'training_plans',
-      title: 'Training Plans',
-      description: 'Training plans on the schedule for this season.',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'reference',
-          to: [{ type: 'training_plan' }],
-        }),
-      ],
     }),
     defineField({
       name: 'orderRank',
