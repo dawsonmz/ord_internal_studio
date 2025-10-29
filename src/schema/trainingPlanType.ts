@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType, useClient } from 'sanity';
+import { defineArrayMember, defineField, defineType } from 'sanity';
 import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 import { GroupedReferenceInput } from '../components/groupedReferenceInput';
 import { TrainingModuleListField } from '../components/trainingModuleListField';
@@ -8,6 +8,15 @@ export const trainingPlanType = defineType({
   title: 'Training Plan',
   type: 'document',
   fields: [
+    defineField({
+      name: 'season',
+      title: 'Season',
+      type: 'reference',
+      to: [{ type: 'season' }],
+      options: {
+        disableNew: true,
+      },
+    }),
     defineField({
       name: 'training_label',
       title: 'Training Label',
@@ -26,34 +35,6 @@ export const trainingPlanType = defineType({
             (source: string) => source.toLowerCase().replaceAll(' ', '-')
         ),
       },
-      options: {
-        isUnique: async (slug, context) => {
-          const { document, getClient } = context;
-          const sanityClient = getClient({ apiVersion: '2025-04-15' }).withConfig({ perspective: 'drafts' });
-
-          var id = document!._id;
-          if (id.startsWith('drafts.')) {
-            id = id.substring(7);
-          }
-          
-          const parent = await sanityClient.fetch(
-              `*[_type == "season" && $currentId in training_plans[]->_id] {
-                _id,
-                _originalId,
-                "slugs": training_plans[@->_id != $currentId]->slug.current,
-              }`,
-              { currentId: id },
-          );
-        
-          if (!parent || !parent.length) {
-            return true;
-          } else if (parent.length > 1) {
-            console.warn(`Multiple season documents reference the same training plan ${id}`);
-            return false;
-          }
-          return parent[0].slugs.filter((s: String) => s === slug).length < 1;
-        },
-      },
     }),
     defineField({
       name: 'date_time',
@@ -63,13 +44,13 @@ export const trainingPlanType = defineType({
     defineField({
       name: 'summary',
       title: 'Summary',
-      description: 'Brief summary of the skills covered',
+      description: 'Brief summary of the skills covered.',
       type: 'string',
     }),
     defineField({
       name: 'visible',
       title: 'Visible',
-      description: 'Whether to show the training plan on the website',
+      description: 'Whether to show the training plan on the website.',
       type: 'boolean',
     }),
     defineField({
