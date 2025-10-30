@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { set, unset, useClient, useFormValue } from 'sanity';
 import { Select, Stack } from '@sanity/ui';
+import { uuid } from '@sanity/uuid';
 
 export function ModuleMainTagListInput(props: any) {
   return ModuleTagListInput(props, true);
@@ -52,7 +53,7 @@ function ModuleTagListInput(props: any, mainTag: boolean) {
         </option>
         {moduleTags.map(
             (moduleTag: any) =>
-                <option value={JSON.stringify({ _ref: moduleTag._id, _type: 'reference' })}>
+                <option value={JSON.stringify(mainTag ? { _ref: moduleTag._id, _type: 'reference' } : { _key: uuid(), _ref: moduleTag._id, _type: 'reference' })}>
                   {moduleTag.name}
                 </option>
         )}

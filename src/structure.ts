@@ -43,36 +43,45 @@ export const structure: StructureResolver = async (
                       ]),
               ),
           S.listItem()
-              .title('Beginner Modules')
+              .title('Modules')
               .child(
                   S.list()
                       .title('Module Types')
                       .items([
-                        ...beginnersModuleTags.map(
-                            (moduleTag: any) =>
-                                orderableDocumentListDeskItem({
-                                  type: 'module',
-                                  id: `module-${moduleTag._id}`,
-                                  title: moduleTag.name,
-                                  filter: '_type == "module" && main_tag._ref == $module_tag_id',
-                                  params: { module_tag_id: moduleTag._id },
-                                  S,
-                                  context,
-                                })
-                        ),
-                        S.divider(),
                         S.listItem()
-                            .title('Missing Main Tag')
+                            .title('Beginners')
                             .child(
-                                S.documentList()
-                                    .title('Modules Missing Main Tag')
-                                    .apiVersion(SANITY_CLIENT_API_VERSION)
-                                    .filter('_type == "module" && main_tag == null')
+                                S.list()
+                                    .title('Beginners Module Tags')
+                                    .items([
+                                      ...beginnersModuleTags.map(
+                                          (moduleTag: any) =>
+                                              orderableDocumentListDeskItem({
+                                                type: 'module',
+                                                id: `module-${moduleTag._id}`,
+                                                title: moduleTag.name,
+                                                filter: '_type == "module" && main_tag._ref == $module_tag_id',
+                                                params: { module_tag_id: moduleTag._id },
+                                                S,
+                                                context,
+                                              })
+                                      ),
+                                      S.divider(),
+                                      S.listItem()
+                                          .title('Missing Main Tag')
+                                          .child(
+                                              S.documentList()
+                                                  .title('Modules Missing Main Tag')
+                                                  .apiVersion(SANITY_CLIENT_API_VERSION)
+                                                  .filter('_type == "module" && main_tag == null')
+                                          )
+                                    ])
                             )
+                            
                       ])
               ),
           S.listItem()
-              .title('Training Plans')
+              .title('Beginners Training Plans')
               .child(
                   S.list()
                       .title('Seasons')
@@ -83,9 +92,9 @@ export const structure: StructureResolver = async (
                                 .title(season.name)
                                 .child(
                                     S.documentList()
-                                        .title(`${season.name} Training Plans`)
+                                        .title(`${season.name} Beginners`)
                                         .apiVersion(SANITY_CLIENT_API_VERSION)
-                                        .filter('_type == "training_plan" && season._ref == $season_id')
+                                        .filter('_type == "training_plan" && type == "beginners" && season._ref == $season_id')
                                         .params({ season_id: season._id })
                                 )
                         ),

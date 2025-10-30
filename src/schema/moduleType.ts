@@ -1,5 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
-import { ModuleMainTagListInput } from '../components/moduleTagListInput';
+import { ModuleAdditionalTagListInput, ModuleMainTagListInput } from '../components/moduleTagListInput';
 
 export const moduleType = defineType({
   name: 'module',
@@ -33,6 +33,23 @@ export const moduleType = defineType({
       components: {
         input: ModuleMainTagListInput,
       },
+    }),
+    defineField({
+      name: 'additional_tags',
+      title: 'Additional Tags',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'reference',
+          to: [{ type: 'module_tag' }],
+          options: {
+            disableNew: true,
+          },
+          components: {
+            input: ModuleAdditionalTagListInput,
+          },
+        }),
+      ],
     }),
     defineField({
       name: 'minutes',
