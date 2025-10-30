@@ -14,7 +14,7 @@ export const moduleCategoryType = defineType({
     defineField({
       name: 'slug',
       title: 'Slug',
-      description: 'Used as unique identifier in URL; auto-filled from Name.',
+      description: 'Used as unique identifier in URL; auto-filled from Name',
       type: 'slug',
       readOnly: true,
       components: {
@@ -32,7 +32,7 @@ export const moduleCategoryType = defineType({
     defineField({
       name: 'modules',
       title: 'Modules',
-      description: 'Modules for this category.',
+      description: 'Modules for this category',
       type: 'array',
       of: [
         defineArrayMember({

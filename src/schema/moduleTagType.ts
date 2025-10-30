@@ -1,11 +1,22 @@
 import { defineField, defineType } from 'sanity';
 import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 
-export const seasonType = defineType({
-  name: 'season',
-  title: 'Season',
+export const moduleTagType = defineType({
+  name: 'module_tag',
+  title: 'Module Tag',
   type: 'document',
   fields: [
+    defineField({
+      name: 'module_type',
+      title: 'Module Type',
+      description: 'The type of module that this tag applies to',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Beginners', value: 'beginners' },
+        ],
+      },
+    }),
     defineField({
       name: 'name',
       title: 'Name',
@@ -20,7 +31,7 @@ export const seasonType = defineType({
       components: {
         input: AutoFilledSlugInput(
             'name',
-            (source: string) => source.toLowerCase().replaceAll(' ', '')
+            (source: string) => source.toLowerCase().replaceAll(' ', '-')
         ),
       },
     }),
@@ -38,9 +49,7 @@ export const seasonType = defineType({
     },
     prepare(value: Record<string, any>) {
       const { name } = value;
-      return {
-        title: name,
-      };
+      return { title: name };
     },
   },
 });

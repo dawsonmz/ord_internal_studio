@@ -1,6 +1,6 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
-import { GroupedReferenceInput } from '../components/groupedReferenceInput';
+import { GroupedModuleListInput } from '../components/groupedModuleListInput';
 import { TrainingModuleListField } from '../components/trainingModuleListField';
 
 export const trainingPlanType = defineType({
@@ -18,6 +18,16 @@ export const trainingPlanType = defineType({
       },
     }),
     defineField({
+      name: 'type',
+      title: 'Training Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Beginners', value: 'beginners' },
+        ],
+      },
+    }),
+    defineField({
       name: 'training_label',
       title: 'Training Label',
       description: 'Unique (within season) identifier for the training plan, e.g. 1, 2, 3, etc.',
@@ -26,7 +36,7 @@ export const trainingPlanType = defineType({
     defineField({
       name: 'slug',
       title: 'Slug',
-      description: 'Used as unique identifier in URL; auto-filled from Training Label.',
+      description: 'Used as unique identifier in URL; auto-filled from Training Label',
       type: 'slug',
       readOnly: true,
       components: {
@@ -44,13 +54,13 @@ export const trainingPlanType = defineType({
     defineField({
       name: 'summary',
       title: 'Summary',
-      description: 'Brief summary of the skills covered.',
+      description: 'Brief summary of the skills covered',
       type: 'string',
     }),
     defineField({
       name: 'visible',
       title: 'Visible',
-      description: 'Whether to show the training plan on the website.',
+      description: 'Whether to show the training plan on the website',
       type: 'boolean',
     }),
     defineField({
@@ -65,7 +75,7 @@ export const trainingPlanType = defineType({
             disableNew: true,
           },
           components: {
-            input: GroupedReferenceInput,
+            input: GroupedModuleListInput,
           },
         }),
       ],

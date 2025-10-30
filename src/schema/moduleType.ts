@@ -1,4 +1,5 @@
 import { defineArrayMember, defineField, defineType } from 'sanity';
+import { ModuleMainTagListInput } from '../components/moduleTagListInput';
 
 export const moduleType = defineType({
   name: 'module',
@@ -6,9 +7,32 @@ export const moduleType = defineType({
   type: 'document',
   fields: [
     defineField({
+      name: 'type',
+      title: 'Module Type',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Beginners', value: 'beginners' },
+        ],
+      },
+    }),
+    defineField({
       name: 'title',
       title: 'Title',
       type: 'string',
+    }),
+    defineField({
+      name: 'main_tag',
+      title: 'Main Tag',
+      description: 'The main category this module belongs to',
+      type: 'reference',
+      to: [{ type: 'module_tag' }],
+      options: {
+        disableNew: true,
+      },
+      components: {
+        input: ModuleMainTagListInput,
+      },
     }),
     defineField({
       name: 'minutes',
@@ -36,6 +60,13 @@ export const moduleType = defineType({
           type: 'image_resource',
         }),
       ],
+    }),
+    defineField({
+      name: 'orderRank',
+      title: 'Order Rank',
+      description: 'Used by Orderable Document List plugin, do not modify',
+      type: 'string',
+      hidden: true,
     }),
   ],
   preview: {

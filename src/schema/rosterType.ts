@@ -9,19 +9,19 @@ export const rosterType = defineType({
     defineField({
       name: 'name',
       title: 'Roster Name',
-      description: 'The full name of the team that the roster belongs to.',
+      description: 'The full name of the team that the roster belongs to',
       type: 'string',
     }),
     defineField({
       name: 'short_name',
       title: 'Short Roster Name',
-      description: 'A shortened name used for display; will be slugified.',
+      description: 'A shortened name used for display; will be slugified',
       type: 'string',
     }),
     defineField({
       name: 'slug',
       title: 'Slug',
-      description: 'Used as unique identifier in URL; auto-filled from Short Roster Name.',
+      description: 'Used as unique identifier in URL; auto-filled from Short Roster Name',
       type: 'slug',
       readOnly: true,
       components: {

@@ -18,12 +18,59 @@ export const structure: StructureResolver = async (
     context: StructureResolverContext,
 ) => {
     const seasons = await getSanityClient().fetch(`*[_type == "season"] | order(orderRank asc) { _id, name }`);
+    const beginnersModuleTags = await getSanityClient()
+        .fetch(`*[_type == "module_tag" && module_type == "beginners"] | order(orderRank asc) { _id, name }`);
+
     return S
         .list()
         .title('Documents')
         .items([
           orderableDocumentListDeskItem({ type: 'season', title: 'Seasons', S, context }),
-          S.listItem().title('Modules').child(S.documentTypeList('module_category').title('Modules')),
+          S.listItem()
+              .title('Module Tags')
+              .child(
+                  S.list()
+                      .title('Module Tag Types')
+                      .items([
+                        orderableDocumentListDeskItem({
+                          type: 'module_tag',
+                          id: `module_tag_beginners`,
+                          title: 'Beginners',
+                          filter: '_type == "module_tag" && module_type == "beginners"',
+                          S,
+                          context,
+                        }),
+                      ]),
+              ),
+          S.listItem()
+              .title('Beginner Modules')
+              .child(
+                  S.list()
+                      .title('Module Types')
+                      .items([
+                        ...beginnersModuleTags.map(
+                            (moduleTag: any) =>
+                                orderableDocumentListDeskItem({
+                                  type: 'module',
+                                  id: `module-${moduleTag._id}`,
+                                  title: moduleTag.name,
+                                  filter: '_type == "module" && main_tag._ref == $module_tag_id',
+                                  params: { module_tag_id: moduleTag._id },
+                                  S,
+                                  context,
+                                })
+                        ),
+                        S.divider(),
+                        S.listItem()
+                            .title('Missing Main Tag')
+                            .child(
+                                S.documentList()
+                                    .title('Modules Missing Main Tag')
+                                    .apiVersion(SANITY_CLIENT_API_VERSION)
+                                    .filter('_type == "module" && main_tag == null')
+                            )
+                      ])
+              ),
           S.listItem()
               .title('Training Plans')
               .child(
@@ -44,10 +91,10 @@ export const structure: StructureResolver = async (
                         ),
                         S.divider(),
                         S.listItem()
-                            .title('No Season')
+                            .title('Missing Season')
                             .child(
                                 S.documentList()
-                                        .title(`Training Plans (No Season)`)
+                                        .title('Training Plans Missing Season')
                                         .apiVersion(SANITY_CLIENT_API_VERSION)
                                         .filter('_type == "training_plan" && season == null')
                             ),
