@@ -36,6 +36,12 @@ export const moduleTagType = defineType({
       },
     }),
     defineField({
+      name: 'color',
+      title: 'Color',
+      description: 'Color used for tag badge display, e.g. #ABCDEF',
+      type: 'string',
+    }),
+    defineField({
       name: 'orderRank',
       title: 'Order Rank',
       description: 'Used by Orderable Document List plugin, do not modify',
