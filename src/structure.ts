@@ -103,14 +103,42 @@ export const structure: StructureResolver = async (
                             .title('Missing Season')
                             .child(
                                 S.documentList()
-                                        .title('Training Plans Missing Season')
-                                        .apiVersion(SANITY_CLIENT_API_VERSION)
-                                        .filter('_type == "training_plan" && season == null')
+                                    .title('Training Plans Missing Season')
+                                    .apiVersion(SANITY_CLIENT_API_VERSION)
+                                    .filter('_type == "training_plan" && season == null')
                             ),
                       ])
               ),
-            S.listItem().title('Skater Numbers').child(S.documentTypeList('skater_number').title('Skater Numbers')),
-            S.listItem().title('Rosters').child(S.documentTypeList('roster').title('Rosters')),
-            S.listItem().title('Footage').child(S.documentTypeList('footage').title('Footage')),
+          S.listItem().title('Skater Numbers').child(S.documentTypeList('skater_number').title('Skater Numbers')),
+          S.listItem().title('Rosters').child(S.documentTypeList('roster').title('Rosters')),
+          S.listItem()
+              .title('Footage')
+              .child(
+                  S.list()
+                      .title('Seasons')
+                      .items([
+                        ...seasons.map(
+                            (season: any) =>
+                                orderableDocumentListDeskItem({
+                                    type: 'footage',
+                                    id: `footage-${season._id}`,
+                                    title: season.name,
+                                    filter: '_type == "footage" && season._ref == $season_id',
+                                    params: { season_id: season._id },
+                                    S,
+                                    context,
+                                })
+                        ),
+                        S.divider(),
+                        S.listItem()
+                            .title('Missing Season')
+                            .child(
+                                S.documentList()
+                                    .title('Footage Missing Season')
+                                    .apiVersion(SANITY_CLIENT_API_VERSION)
+                                    .filter('_type == "footage" && season == null')
+                            ),
+                      ])
+              ),
         ]);
 };

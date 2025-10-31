@@ -61,6 +61,13 @@ export const footageType = defineType({
       description: 'URL for a video source other than YouTube; if populated, YouTube video ID and Start Time should be left empty',
       type: 'string',
     }),
+    defineField({
+      name: 'orderRank',
+      title: 'Order Rank',
+      description: 'Used by Orderable Document List plugin, do not modify',
+      type: 'string',
+      hidden: true,
+    }),
   ],
   preview: {
     select: {
