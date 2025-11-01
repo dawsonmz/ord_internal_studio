@@ -60,13 +60,19 @@ export const moduleType = defineType({
       name: 'short_text',
       title: 'Short Text',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [
+        { type: 'block' },
+        { type: 'image' },
+      ],
     }),
     defineField({
       name: 'detailed_text',
       title: 'Detailed Text',
       type: 'array',
-      of: [{ type: 'block' }],
+      of: [
+        { type: 'block' },
+        { type: 'image' },
+      ],
     }),
     defineField({
       name: 'resources',
