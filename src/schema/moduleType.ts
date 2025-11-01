@@ -75,16 +75,6 @@ export const moduleType = defineType({
       ],
     }),
     defineField({
-      name: 'resources',
-      title: 'Resources',
-      type: 'array',
-      of: [
-        defineArrayMember({
-          type: 'image_resource',
-        }),
-      ],
-    }),
-    defineField({
       name: 'orderRank',
       title: 'Order Rank',
       description: 'Used by Orderable Document List plugin, do not modify',
