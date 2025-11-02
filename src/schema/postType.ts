@@ -11,7 +11,7 @@ export const postType = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Update', value: 'updates' },
+          { title: 'Update', value: 'Update' },
         ],
       },
     }),
