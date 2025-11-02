@@ -1,4 +1,5 @@
 import { defineField, defineType } from 'sanity';
+import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 
 export const postType = defineType({
   name: 'post',
@@ -11,7 +12,7 @@ export const postType = defineType({
       type: 'string',
       options: {
         list: [
-          { title: 'Update', value: 'update' },
+          { title: 'Update', value: 'updates' },
         ],
       },
     }),
@@ -19,6 +20,12 @@ export const postType = defineType({
       name: 'title',
       title: 'Title',
       type: 'string',
+    }),
+    defineField({
+      name: 'slug',
+      title: 'Slug',
+      description: 'Used as unique identifier in URL',
+      type: 'slug',
     }),
     defineField({
       name: 'date',
