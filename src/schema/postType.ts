@@ -1,5 +1,4 @@
 import { defineField, defineType } from 'sanity';
-import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 
 export const postType = defineType({
   name: 'post',
