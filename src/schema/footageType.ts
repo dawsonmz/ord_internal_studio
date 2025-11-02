@@ -35,7 +35,6 @@ export const footageType = defineType({
           { title: 'A Team', value: 'A Team' },
           { title: 'B Team', value: 'B Team' },
           { title: 'Scrimmage', value: 'Scrimmage' },
-          { title: 'Team Norway', value: 'Team Norway' },
         ],
       },
     }),
