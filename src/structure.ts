@@ -140,5 +140,6 @@ export const structure: StructureResolver = async (
                             ),
                       ])
               ),
+          S.listItem().title('Posts').child(S.documentTypeList('post').title('Posts')),
         ]);
 };
