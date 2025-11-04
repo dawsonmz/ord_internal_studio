@@ -37,6 +37,12 @@ export const postType = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'visible',
+      title: 'Visible',
+      description: 'Whether to show the post on the website',
+      type: 'boolean',
+    }),
+    defineField({
       name: 'post',
       title: 'Post',
       type: 'array',
@@ -46,6 +52,9 @@ export const postType = defineType({
       ],
     }),
   ],
+  initialValue: {
+    visible: false,
+  },
   preview: {
     select: {
       type: 'type',
