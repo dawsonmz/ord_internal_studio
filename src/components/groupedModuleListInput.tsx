@@ -21,7 +21,7 @@ export function GroupedModuleListInput(props: any) {
       () => {
         async function fetchModuleTags() {
           const tags = await sanityClient.fetch(
-              `*[_type == "module_tag" && module_type == $module_type] | order(_createdAt asc) {
+              `*[_type == "module_tag" && module_type == $module_type] | order(orderRank asc) {
                 name,
                 "modules": *[_type == "module" && main_tag._ref == ^._id] | order(orderRank asc) {
                   _id,
