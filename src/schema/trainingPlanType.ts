@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from 'sanity';
+import { defineField, defineType } from 'sanity';
 import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 import { GroupedModuleListInput } from '../components/groupedModuleListInput';
 import { TrainingModuleListField } from '../components/trainingModuleListField';
@@ -68,7 +68,7 @@ export const trainingPlanType = defineType({
       title: 'Modules',
       type: 'array',
       of: [
-        defineArrayMember({
+        {
           type: 'reference',
           to: [{ type: 'module' }],
           options: {
@@ -77,7 +77,7 @@ export const trainingPlanType = defineType({
           components: {
             input: GroupedModuleListInput,
           },
-        }),
+        },
       ],
       components: {
         field: TrainingModuleListField,

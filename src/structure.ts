@@ -109,6 +109,7 @@ export const structure: StructureResolver = async (
                             ),
                       ])
               ),
+          orderableDocumentListDeskItem({ type: 'required_skill', title: 'Required Skills', S, context }),
           S.listItem().title('Skater Numbers').child(S.documentTypeList('skater_number').title('Skater Numbers')),
           S.listItem().title('Rosters').child(S.documentTypeList('roster').title('Rosters')),
           S.listItem()

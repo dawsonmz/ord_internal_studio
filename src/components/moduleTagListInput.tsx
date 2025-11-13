@@ -4,17 +4,23 @@ import { Select, Stack } from '@sanity/ui';
 import { uuid } from '@sanity/uuid';
 
 export function ModuleMainTagListInput(props: any) {
-  return ModuleTagListInput(props, true);
+  const moduleType = useFormValue([ 'type' ]) as string;
+  return ModuleTagListInput(props, moduleType, 'main_tag');
 }
 
 export function ModuleAdditionalTagListInput(props: any) {
-  return ModuleTagListInput(props, false);
+  const moduleType = useFormValue([ 'type' ]) as string;
+  return ModuleTagListInput(props, moduleType, null);
 }
 
-function ModuleTagListInput(props: any, mainTag: boolean) {
+export function RequiredSkillModuleTagListInput(props: any) {
+  return ModuleTagListInput(props, 'beginners', 'module_tag')
+}
+
+function ModuleTagListInput(props: any, moduleType: string | undefined, tagField: string | null) {
   const [ moduleTags, setModuleTags ] = useState([]);
   const sanityClient = useClient({ apiVersion: '2025-04-15' }).withConfig({ perspective: 'published' });
-  const mainTagValue = mainTag ? JSON.stringify(useFormValue([ 'main_tag' ])) : '';
+  const tagFieldValue = tagField ? JSON.stringify(useFormValue([ tagField ])) : '';
 
   const { onChange } = props;
   const handleChange = useCallback(
@@ -25,7 +31,6 @@ function ModuleTagListInput(props: any, mainTag: boolean) {
       [onChange],
   );
 
-  const moduleType = useFormValue([ 'type' ]) as string;
   useEffect(
       () => {
         async function fetchModuleTags() {
@@ -47,13 +52,13 @@ function ModuleTagListInput(props: any, mainTag: boolean) {
   );
 
   return <Stack>
-      <Select fontSize={1} padding={3} space={3} onChange={handleChange} value={mainTagValue}>
+      <Select fontSize={1} padding={3} space={3} onChange={handleChange} value={tagFieldValue}>
         <option value="">
           { moduleType ? '-- Select a module tag --' : '-- Fill in type field first --' }
         </option>
         {moduleTags.map(
             (moduleTag: any) =>
-                <option value={JSON.stringify(mainTag ? { _ref: moduleTag._id, _type: 'reference' } : { _key: uuid(), _ref: moduleTag._id, _type: 'reference' })}>
+                <option value={JSON.stringify(tagField ? { _ref: moduleTag._id, _type: 'reference' } : { _key: uuid(), _ref: moduleTag._id, _type: 'reference' })}>
                   {moduleTag.name}
                 </option>
         )}

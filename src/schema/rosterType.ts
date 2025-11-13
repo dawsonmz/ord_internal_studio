@@ -1,4 +1,4 @@
-import { defineArrayMember, defineField, defineType } from 'sanity';
+import { defineField, defineType } from 'sanity';
 import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 
 export const rosterType = defineType({
@@ -50,13 +50,13 @@ export const rosterType = defineType({
       title: 'Line A',
       type: 'array',
       of: [
-        defineArrayMember({
+        {
           type: 'reference',
           to: [{ type: 'skater_number' }],
           options: {
             disableNew: true,
           },
-        }),
+        },
       ],
     }),
     defineField({
@@ -69,13 +69,13 @@ export const rosterType = defineType({
       title: 'Line B',
       type: 'array',
       of: [
-        defineArrayMember({
+        {
           type: 'reference',
           to: [{ type: 'skater_number' }],
           options: {
             disableNew: true,
           },
-        }),
+        },
       ],
     }),
     defineField({
@@ -83,13 +83,13 @@ export const rosterType = defineType({
       title: 'Jammers',
       type: 'array',
       of: [
-        defineArrayMember({
+        {
           type: 'reference',
           to: [{ type: 'skater_number' }],
           options: {
             disableNew: true,
           },
-        }),
+        },
       ],
     }),
     defineField({
@@ -97,13 +97,13 @@ export const rosterType = defineType({
       title: 'Bench',
       type: 'array',
       of: [
-        defineArrayMember({
+        {
           type: 'reference',
           to: [{ type: 'skater_number' }],
           options: {
             disableNew: true,
           },
-        }),
+        },
       ],
     }),
   ],
