@@ -34,7 +34,7 @@ export const requiredSkillType = defineType({
       components: {
         input: AutoFilledSlugInput(
             'title',
-            (source: string) => source.toLowerCase().replaceAll(' ', '-')
+            (source: string) => source.toLowerCase().replaceAll(' ', '_')
         ),
       },
     }),
