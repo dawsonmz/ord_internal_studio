@@ -1,6 +1,7 @@
 import { defineField, defineType } from 'sanity';
 import { AutoFilledSlugInput } from '../components/autoFilledSlugInput';
 import { GroupedModuleListInput } from '../components/groupedModuleListInput';
+import { isTrainingPlanSlugUnique } from '../components/isTrainingPlanSlugUnique';
 import { TrainingModuleListField } from '../components/trainingModuleListField';
 
 export const trainingPlanType = defineType({
@@ -44,6 +45,9 @@ export const trainingPlanType = defineType({
             'training_label',
             (source: string) => source.toLowerCase().replaceAll(' ', '-')
         ),
+      },
+      options: {
+        isUnique: isTrainingPlanSlugUnique,
       },
     }),
     defineField({
