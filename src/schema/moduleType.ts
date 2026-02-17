@@ -75,6 +75,15 @@ export const moduleType = defineType({
       ],
     }),
     defineField({
+      name: 'advanced_text',
+      title: 'Advanced Text',
+      type: 'array',
+      of: [
+        { type: 'block' },
+        { type: 'image' },
+      ],
+    }),
+    defineField({
       name: 'orderRank',
       title: 'Order Rank',
       description: 'Used by Orderable Document List plugin, do not modify',
