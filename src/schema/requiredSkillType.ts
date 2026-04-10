@@ -15,6 +15,7 @@ export const requiredSkillType = defineType({
       options: {
         list: [
           { title: 'Fundamentals', value: 'Fundamentals' },
+          { title: 'Basic Contact', value: 'Basic Contact' },
           { title: 'Controlled Gameplay', value: 'Controlled Gameplay' },
           { title: 'Full Gameplay', value: 'Full Gameplay' },
         ],
@@ -23,6 +24,7 @@ export const requiredSkillType = defineType({
     defineField({
       name: 'title',
       title: 'Title',
+      description: 'IMPORTANT: Do NOT change once this has been in use, since the slug needs to be static',
       type: 'string',
     }),
     defineField({

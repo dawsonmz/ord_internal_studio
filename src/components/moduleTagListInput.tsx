@@ -14,6 +14,7 @@ export function ModuleAdditionalTagListInput(props: any) {
 }
 
 export function RequiredSkillModuleTagListInput(props: any) {
+  // This will eventually need to be expanded as more module types are added.
   return ModuleTagListInput(props, 'beginners', 'module_tag')
 }
 
