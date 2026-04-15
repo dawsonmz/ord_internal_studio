@@ -54,6 +54,9 @@ export const trainingPlanType = defineType({
       name: 'date_time',
       title: 'Date and Time',
       type: 'datetime',
+      options: {
+        timeFormat: 'HH:mm',
+      },
     }),
     defineField({
       name: 'summary',
