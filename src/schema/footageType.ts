@@ -59,7 +59,8 @@ export const footageType = defineType({
       name: 'other_link',
       title: 'Other Video Link',
       description: 'URL for a video source other than YouTube; if populated, YouTube video ID and Start Time should be left empty',
-      type: 'string',
+      type: 'url',
+      validation: (rule: any) => rule.uri({ scheme: ['https'] }),
     }),
     defineField({
       name: 'orderRank',
