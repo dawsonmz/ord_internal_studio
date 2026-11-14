@@ -1,6 +1,7 @@
 import { type SanityClient, useClient } from 'sanity';
 import type { StructureBuilder, StructureResolver, StructureResolverContext } from 'sanity/structure';
 import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list';
+import { playScenarios } from './schema/playType';
 
 const SANITY_CLIENT_API_VERSION = '2025-04-15';
 
@@ -138,6 +139,35 @@ export const structure: StructureResolver = async (
                                     .title('Footage Missing Season')
                                     .apiVersion(SANITY_CLIENT_API_VERSION)
                                     .filter('_type == "footage" && season == null')
+                            ),
+                      ])
+              ),
+          S.listItem()
+              .title('Plays')
+              .child(
+                  S.list()
+                      .title('Scenarios')
+                      .items([
+                        ...playScenarios.map(
+                            scenario =>
+                                orderableDocumentListDeskItem({
+                                    type: 'play',
+                                    id: `play-${scenario.value}`,
+                                    title: scenario.title,
+                                    filter: '_type == "play" && scenario == $scenario',
+                                    params: { scenario: scenario.value },
+                                    S,
+                                    context,
+                                })
+                        ),
+                        S.divider(),
+                        S.listItem()
+                            .title('Missing Scenario')
+                            .child(
+                                S.documentList()
+                                    .title('Plays Missing Scenario')
+                                    .apiVersion(SANITY_CLIENT_API_VERSION)
+                                    .filter('_type == "play" && !defined(scenario)')
                             ),
                       ])
               ),

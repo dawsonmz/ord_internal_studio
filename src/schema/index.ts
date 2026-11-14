@@ -1,6 +1,7 @@
 import { footageType } from './footageType';
 import { moduleTagType } from './moduleTagType';
 import { moduleType } from './moduleType';
+import { playType } from './playType';
 import { postType } from './postType';
 import { requiredSkillType } from './requiredSkillType';
 import { rosterType } from './rosterType';
@@ -12,6 +13,7 @@ export const schemaTypes = [
   footageType,
   moduleTagType,
   moduleType,
+  playType,
   postType,
   requiredSkillType,
   rosterType,
