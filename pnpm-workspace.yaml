@@ -1,0 +1,14 @@
+engineStrict: true
+
+# Dependency build scripts are blocked unless explicitly allowed here.
+allowBuilds:
+  esbuild: true
+
+# Wait a day before installing newly published versions, so compromised releases have time to be caught.
+minimumReleaseAge: 1440
+
+# Reject versions published with weaker trust evidence (e.g. no provenance) than an earlier release, a
+# sign of account takeover. Versions older than 30 days are exempt; many established packages publish
+# inconsistently (e.g. chokidar@4.0.3, vite@6.4.1), and a takeover would have been caught by then.
+trustPolicy: no-downgrade
+trustPolicyIgnoreAfter: 43200

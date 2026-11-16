@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "main": "package.json",
   "license": "UNLICENSED",
+  "packageManager": "pnpm@12.6.0",
   "scripts": {
     "dev": "sanity dev",
     "start": "sanity start",
@@ -26,7 +27,7 @@
   },
   "devDependencies": {
     "@sanity/eslint-config-studio": "^5.0.2",
-    "@types/react": "^18.0.25",
+    "@types/react": "^19.3.0",
     "eslint": "^9.9.0",
     "prettier": "^3.0.2",
     "typescript": "^5.1.6"

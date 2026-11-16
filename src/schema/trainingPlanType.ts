@@ -65,12 +65,6 @@ export const trainingPlanType = defineType({
       type: 'string',
     }),
     defineField({
-      name: 'visible',
-      title: 'Visible',
-      description: 'Whether to show the training plan on the website',
-      type: 'boolean',
-    }),
-    defineField({
       name: 'omit_timestamps',
       title: 'Omit Timestamps',
       description: 'Whether to compute and display drill starting times',
@@ -98,7 +92,6 @@ export const trainingPlanType = defineType({
     }),
   ],
   initialValue: {
-    visible: false,
     omit_timestamps: false,
   },
   preview: {
