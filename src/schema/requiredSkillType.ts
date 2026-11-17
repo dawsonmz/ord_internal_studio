@@ -15,7 +15,9 @@ export const requiredSkillType = defineType({
       options: {
         list: [
           { title: 'Fundamentals', value: 'Fundamentals' },
+          { title: 'Advanced Skills', value: 'Advanced Skills' },
           { title: 'Basic Contact', value: 'Basic Contact' },
+          { title: 'Rules and Safety', value: 'Rules and Safety' },
           { title: 'Controlled Gameplay', value: 'Controlled Gameplay' },
           { title: 'Full Gameplay', value: 'Full Gameplay' },
         ],
